@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.aspirecn.hop.sample2">
+    <!--android:sharedUserId="com.aspirecn.hop"-->
+
+    <permission
+        android:name="aspirecn.permission.READ_CONTENT_PROVIDER"
+        android:label="allow read content provider"
+        android:protectionLevel="normal" />
+
+    <permission
+        android:name="aspirecn.permission.WRITE_CONTENT_PROVIDER"
+        android:label="allow write content provider"
+        android:protectionLevel="normal" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 设置exported="true"，对外暴露，支持外部应用显示调用 -->
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="true"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- 设置intent-filter后，exported="true"，支持外部应用显示或隐式调用 -->
+            <intent-filter>
+                <action android:name="com.aspirecn.hop.sample2_login" />
+                <!-- 必须添加该category -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.SimpleKitkatNotificationListener"
+            android:debuggable="true"
+            android:label="@string/service_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+
+        <!--权限设置参考：http://blog.csdn.net/flowingflying/article/details/17412609-->
+        <provider
+            android:name=".provider.MyContentProvider"
+            android:authorities="com.aspirecn.hop.sample2.MyContentProvider"
+            android:enabled="true"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:readPermission="aspirecn.permission.READ_CONTENT_PROVIDER"
+            android:writePermission="aspirecn.permission.WRITE_CONTENT_PROVIDER">
+            <path-permission
+                android:pathPrefix="/teachers"
+                android:readPermission="aspirecn.permission.READ_CONTENT_PROVIDER" /><!--自定义指定符合条件的Uri需要的权限 -->
+            <!-- <grant-uri-permission android:pathPrefix="/teachers"/> 是否允许权限传递，A提供ContentProvider，B有Read权限，B调用C的Activity，可选择让C也具有Read权限-->
+        </provider>
+
+        <service
+            android:name=".service.ArithmeticService"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.remote.service.CALCULATOR" />
+            </intent-filter>
+        </service>
+    </application>
+
+
+</manifest>
