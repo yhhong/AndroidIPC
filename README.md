@@ -20,7 +20,7 @@ Resource<br>
 android:permission="string"<br>
 android:readPermission="string"<br>
 android:writePermission="string"<br>
-3、android:exported="false" & <br>android:shareUserId="com.aspirecn.hop"<br>
+3、android:exported="false" & android:shareUserId="com.aspirecn.hop"<br>
 <p/>
 三、Broadcast<br>
 <p/>
@@ -34,3 +34,4 @@ Client:<br>
 2、bindService，成功后得到IBinder(aidlInterface)的引用，即可调用Server提供的AIDL接口；另外注意：bind service，从android5.0开始需要显示调用<br>
 <p/>
 五、NotificationListenerService<br>
+
