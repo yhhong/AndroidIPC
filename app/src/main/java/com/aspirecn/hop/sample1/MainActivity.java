@@ -141,7 +141,9 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_send_broadcast)
     void sendBroadcast() {
-        NewMessageNotification.notify(this, "example string", 3);
+        Intent intent = new Intent();
+        intent.setAction("com.aspirecn.sample2.hop.myreceiver.static");
+        sendBroadcast(intent);
     }
 
     @OnClick(R.id.btn_obtain_content)
@@ -183,6 +185,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
+    }
+
+    @OnClick(R.id.btn_notification)
+    void notification() {
+        NewMessageNotification.notify(this, "example string", 3);
     }
 
     @Override

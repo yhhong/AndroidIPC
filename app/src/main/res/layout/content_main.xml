@@ -26,22 +26,28 @@
         android:text="@string/btn_start_activity_implicit" />
 
     <Button
-        android:id="@+id/btn_send_broadcast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_send_broadcast" />
-
-    <Button
         android:id="@+id/btn_obtain_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_obtain_content" />
 
     <Button
+        android:id="@+id/btn_send_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_send_broadcast" />
+
+    <Button
         android:id="@+id/btn_aidl_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_aidl_service" />
+
+    <Button
+        android:id="@+id/btn_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_notification" />
 
     <TextView
         android:id="@+id/tv_show"

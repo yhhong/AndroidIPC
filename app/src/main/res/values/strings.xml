@@ -6,6 +6,7 @@
     <string name="btn_send_broadcast">send broadcast</string>
     <string name="btn_obtain_content">obtain content</string>
     <string name="btn_aidl_service">aidl service</string>
+    <string name="btn_notification">notification</string>
 
     <string name="new_message_notification_title_template">New message: %1$s</string>
 

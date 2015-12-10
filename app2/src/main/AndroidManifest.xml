@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aspirecn.hop.sample2">
-    <!--android:sharedUserId="com.aspirecn.hop"-->
+
+    <!-- android:sharedUserId="com.aspirecn.hop" -->
 
     <permission
         android:name="aspirecn.permission.READ_CONTENT_PROVIDER"
         android:label="allow read content provider"
         android:protectionLevel="normal" />
-
     <permission
         android:name="aspirecn.permission.WRITE_CONTENT_PROVIDER"
         android:label="allow write content provider"
@@ -59,8 +59,7 @@
             </intent-filter>
         </service>
 
-
-        <!--权限设置参考：http://blog.csdn.net/flowingflying/article/details/17412609-->
+        <!-- 权限设置参考：http://blog.csdn.net/flowingflying/article/details/17412609 -->
         <provider
             android:name=".provider.MyContentProvider"
             android:authorities="com.aspirecn.hop.sample2.MyContentProvider"
@@ -71,8 +70,8 @@
             android:writePermission="aspirecn.permission.WRITE_CONTENT_PROVIDER">
             <path-permission
                 android:pathPrefix="/teachers"
-                android:readPermission="aspirecn.permission.READ_CONTENT_PROVIDER" /><!--自定义指定符合条件的Uri需要的权限 -->
-            <!-- <grant-uri-permission android:pathPrefix="/teachers"/> 是否允许权限传递，A提供ContentProvider，B有Read权限，B调用C的Activity，可选择让C也具有Read权限-->
+                android:readPermission="aspirecn.permission.READ_CONTENT_PROVIDER" /> <!-- 自定义指定符合条件的Uri需要的权限 -->
+            <!-- <grant-uri-permission android:pathPrefix="/teachers"/> 是否允许权限传递，A提供ContentProvider，B有Read权限，B调用C的Activity，可选择让C也具有Read权限 -->
         </provider>
 
         <service
@@ -82,7 +81,16 @@
                 <action android:name="com.remote.service.CALCULATOR" />
             </intent-filter>
         </service>
-    </application>
 
+        <receiver
+            android:name=".broadcast.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <!--<action android:name="android.intent.action.BATTERY_LOW" />-->
+                <action android:name="com.aspirecn.sample2.hop.myreceiver.static" />
+            </intent-filter>
+        </receiver>
+    </application>
 
 </manifest>
