@@ -104,11 +104,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         if (aidlInterface == null) {
-            Intent intent = new Intent();
-            intent.setAction("com.remote.service.CALCULATOR");
-            Intent eIntent = new Intent(IntentUtil.getExplicitIntent(this, intent));
+            Intent intent = new Intent("com.remote.service.CALCULATOR");
+            intent.setPackage("com.aspirecn.hop.sample3");//被调用Service所在的进程的applicationId
             //binding to remote service
-            bindService(eIntent, mServiceConnection, Service.BIND_AUTO_CREATE);
+            bindService(intent, mServiceConnection, Service.BIND_AUTO_CREATE);
         }
     }
 
